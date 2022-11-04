@@ -1,7 +1,7 @@
-import './tailwind.css';
+import "./tailwind.css";
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
