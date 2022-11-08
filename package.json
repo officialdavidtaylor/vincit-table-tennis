@@ -9,7 +9,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier -w ./src"
+    "format": "prettier --write ./src",
+    "check-types": "tsc --pretty --noEmit",
+    "check-format": "prettier --check ./src",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js",
+    "test-all": "yarn check-format && yarn check-lint && yarn check-types && yarn build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
@@ -20,6 +25,8 @@
     "@types/react-dom": "18.0.8",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
+    "husky": "^8.0.2",
+    "husky-init": "8.0.0",
     "next": "13.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -33,6 +40,7 @@
     "postcss": "^8.4.18",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
-    "tailwindcss": "^3.2.2"
+    "tailwindcss": "^3.2.2",
+    "husky": "^8.0.0"
   }
 }
