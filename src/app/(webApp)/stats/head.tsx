@@ -1,12 +1,12 @@
 export default function Head() {
   return (
     <>
-      <title>Register • Vincit Table Tennis</title>
+      <title>Stats • Vincit Table Tennis</title>
       <meta
         name="viewport"
         content="minimum-scale=1, initial-scale=1, width=device-width"
       />
-      <meta name="apple-mobile-web-app-title" content="Register" />
+      <meta name="apple-mobile-web-app-title" content="Stat Viewer" />
       <link rel="apple-touch-icon" href="touch-icon-ipad-retina.png"></link>
       {/* Apple iPhone High Resolution */}
       <link
