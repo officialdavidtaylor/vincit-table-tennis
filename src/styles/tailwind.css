@@ -4,13 +4,12 @@
 
 @layer components {
   .button-primary {
-    @apply
-    mt-6 rounded-md bg-purple-700 p-2 px-4 text-lg font-medium text-white disabled:border-2 disabled:border-purple-300 disabled:bg-purple-200 disabled:text-white
+    @apply mt-6 rounded-md bg-purple-700 p-2 px-4 text-lg font-medium text-white disabled:border-2 disabled:border-purple-300 disabled:bg-purple-200 disabled:text-white;
   }
   .input-box {
-    @apply w-full rounded-md border-2 border-purple-200 p-2 text-lg
+    @apply w-full rounded-md border-2 border-purple-200 p-2 text-lg;
   }
   .combo-box-results {
-    @apply w-full p-2 text-lg ui-active:bg-purple-200
+    @apply w-full p-2 text-lg ui-active:bg-purple-200;
   }
 }

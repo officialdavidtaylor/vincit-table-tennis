@@ -1750,6 +1750,18 @@ human-signals@^2.1.0:
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
   integrity sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==
 
+husky-init@8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/husky-init/-/husky-init-8.0.0.tgz#af1773803a44a0625a2d9d415cc892f51847e7d0"
+  integrity sha512-P9qq7eOInj853p57QhK/QDKahx8Vd+hWWmzA+N+Q3/dsHH+DFUeRurRd6ZSFzF1Ol/6yUS+fa9yMw5Dao0pxxw==
+  dependencies:
+    husky "^8.0.0"
+
+husky@^8.0.0, husky@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.2.tgz#5816a60db02650f1f22c8b69b928fd6bcd77a236"
+  integrity sha512-Tkv80jtvbnkK3mYWxPZePGFpQ/tT3HNSs/sasF9P2YfkMezDl3ON37YN6jUUI4eTg5LcyVynlb6r4eyvOmspvg==
+
 ieee754@^1.1.13:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
