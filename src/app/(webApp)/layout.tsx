@@ -18,13 +18,14 @@ export default function WebAppLayout({
     game: "Game Logger",
     stats: "STATS :D",
   };
+
   // use the active route as the heading sub-title
   const segment = useSelectedLayoutSegment() as keyof typeof segmentNames;
   return (
     <html>
       <head></head>
-      <body>
-        <div id="container" className="w-screen p-4">
+      <body className="flex w-screen justify-center">
+        <div id="container" className="w-full max-w-xl p-4">
           <Link
             href="/"
             id="heading"
