@@ -25,6 +25,7 @@
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
+    "@types/uuid": "^8.3.4",
     "client-only": "^0.0.1",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",
@@ -36,10 +37,12 @@
     "react-hook-form": "^7.39.1",
     "server-only": "^0.0.1",
     "supabase": "^1.11.7",
-    "typescript": "4.8.4"
+    "typescript": "4.8.4",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.28.4-appdir.0",
+    "@tailwindcss/forms": "^0.5.3",
     "autoprefixer": "^10.4.13",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.0",

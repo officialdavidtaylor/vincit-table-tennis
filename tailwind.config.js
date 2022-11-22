@@ -10,5 +10,8 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("@headlessui/tailwindcss")({ prefix: "ui" })],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@headlessui/tailwindcss")({ prefix: "ui" }),
+  ],
 };

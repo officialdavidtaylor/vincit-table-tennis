@@ -2,7 +2,6 @@
 
 import Button from "@components-client/Form/Button";
 import Input from "@components-client/Form/Input";
-import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { supabase } from "../../../lib/supabase";
 
@@ -10,14 +9,12 @@ const Register = () => {
   // use react-hook-form to manage form state and submission
   const {
     register,
+    setError,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    setIsSubmitting(true);
     const formData = data;
     console.log("executed onSubmit!");
     // use Supabase auth here :D
@@ -25,6 +22,7 @@ const Register = () => {
       if (formData.playerEmail) {
         const { data, error } = await supabase.auth.signInWithOtp({
           email: formData.playerEmail,
+          options: { data: { playerName: formData.playerName } },
         });
         if (error) throw new Error("For some reason this didn't work :shrug:");
       }
@@ -32,7 +30,6 @@ const Register = () => {
     } catch (error) {
       alert("An error has been detected; please try again later");
     }
-    setIsSubmitting(false);
   };
 
   console.log(errors);
@@ -47,7 +44,7 @@ const Register = () => {
           {...register("playerName", { required: true })}
         />
         <Input
-          title="Player Email"
+          title="Player Email (use vincit.fi)"
           placeholder="first.last@vincit.fi"
           type="email"
           autoCapitalize="none"
@@ -55,10 +52,19 @@ const Register = () => {
           autoCorrect="off"
           spellCheck="false"
           {...register("playerEmail", {
-            required: true,
-            pattern: /(@vincit.com)|(@vincit.fi)/g,
+            required: {
+              value: true,
+              message: "please use your vincit.fi address",
+            },
+            pattern: /(@vincit.fi)/g,
           })}
         />
+        {errors.playerEmail?.type === "pattern" &&
+        errors.playerEmail?.message ? (
+          <span className="text-md text-red-500">
+            {errors.playerEmail.message as string}
+          </span>
+        ) : null}
         <Button
           type="submit"
           className="button-primary"
