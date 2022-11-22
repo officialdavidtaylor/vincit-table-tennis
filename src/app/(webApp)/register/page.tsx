@@ -2,7 +2,6 @@
 
 import Button from "@components-client/Form/Button";
 import Input from "@components-client/Form/Input";
-import { useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { supabase } from "../../../lib/supabase";
 
@@ -11,13 +10,10 @@ const Register = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm();
 
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    setIsSubmitting(true);
     const formData = data;
     console.log("executed onSubmit!");
     // use Supabase auth here :D
@@ -25,6 +21,7 @@ const Register = () => {
       if (formData.playerEmail) {
         const { data, error } = await supabase.auth.signInWithOtp({
           email: formData.playerEmail,
+          options: { data: { playerName: formData.playerName } },
         });
         if (error) throw new Error("For some reason this didn't work :shrug:");
       }
@@ -32,7 +29,6 @@ const Register = () => {
     } catch (error) {
       alert("An error has been detected; please try again later");
     }
-    setIsSubmitting(false);
   };
 
   console.log(errors);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEventHandler } from "react";
 
 interface InputProps {
   autoCapitalize?: "none";
@@ -11,6 +11,8 @@ interface InputProps {
   readOnly?: boolean;
   defaultValue?: string | number;
   placeholder?: string;
+  pattern?: string;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
 }
 
 // eslint-disable-next-line react/display-name
@@ -27,6 +29,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       value,
       defaultValue,
       readOnly,
+      pattern,
+      onChange,
       ...rest
     } = props;
     return (
@@ -44,6 +48,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             spellCheck={spellCheck}
             placeholder={placeholder}
             readOnly={readOnly}
+            onChange={onChange}
+            pattern={pattern}
             value={value}
             defaultValue={defaultValue}
             {...rest}

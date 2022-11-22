@@ -53,7 +53,11 @@ export default function HomePage({
         <span className="mt-8 text-3xl font-semibold">Vincit Table Tennis</span>
         <span>
           {user || clientUser
-            ? `Welcome back, ${user ? user.email : clientUser?.email}!`
+            ? `Welcome back, ${
+                user
+                  ? user.user_metadata.playerName
+                  : clientUser?.user_metadata.playerName
+              }!`
             : "Please register to continue"}
         </span>
       </div>
