@@ -32,6 +32,11 @@ export const getServerSideProps = async (
     return { id, email, playerName };
   });
 
+  const { data: players, error: playerErrors } = await supabase
+    .from("PlayerTable")
+    .select();
+  console.log(players);
+
   if (userObject.length > 0) {
     return {
       props: {
