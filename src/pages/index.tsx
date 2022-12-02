@@ -72,7 +72,10 @@ export default function HomePage({
             </Link>
             <Button
               className="button-primary bg-red-500"
-              onClick={async () => supabaseClient.auth.signOut()}
+              onClick={async () => {
+                await supabaseClient.auth.signOut();
+                location.reload();
+              }}
             >
               Logout
             </Button>
