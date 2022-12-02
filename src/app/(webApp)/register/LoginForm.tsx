@@ -22,6 +22,9 @@ const LoginForm = () => {
         .from("PlayerTable")
         .select("*")
         .eq("playerEmail", formData.playerEmail);
+      if (!takenEmail?.data?.length) {
+        throw new Error("A user does not exist with this email.");
+      }
       if (takenEmail?.data?.length && formData.playerEmail) {
         const { error } = await supabase.auth.signInWithOtp({
           email: formData.playerEmail,
