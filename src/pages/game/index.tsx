@@ -18,32 +18,28 @@ export default (props: {
   </>
 );
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
+export const getServerSideProps = async () => {
   // Create authenticated Supabase Client
   const supabase = supabaseServiceRole;
-  // query for all users
-  const { data, error } = await supabase.auth.admin.listUsers();
-
-  const userObject = data.users.map((record) => {
-    const { id, email } = record;
-    const playerName = record.user_metadata.playerName ?? "name not found";
-    return { id, email, playerName };
-  });
 
   const { data: players, error: playerErrors } = await supabase
     .from("PlayerTable")
     .select();
-  console.log(players);
 
-  if (userObject.length > 0) {
-    return {
-      props: {
-        opponents: userObject,
-        gameTypes: null,
-      },
-    };
+  if (players) {
+    const playersObject = players.map((player) => {
+      const { id, playerName, playerEmail: email } = player;
+      return { id, email, playerName };
+    });
+
+    if (playersObject.length > 0) {
+      return {
+        props: {
+          opponents: playersObject,
+          gameTypes: null,
+        },
+      };
+    }
   }
 
   return {
