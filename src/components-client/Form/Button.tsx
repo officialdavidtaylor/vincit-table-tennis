@@ -5,7 +5,7 @@ interface ButtonProps {
   children: React.ReactNode;
   className?: string;
   isLoading?: boolean;
-  onClick?: ((arg0?: any) => null) | ((arg0?: any) => Promise<any>);
+  onClick?: ((arg0?: any) => void) | ((arg0?: any) => Promise<any>);
 }
 
 const Button = (props: ButtonProps) => {
