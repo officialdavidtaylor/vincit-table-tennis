@@ -23,8 +23,6 @@ export default ({ opponents }: any) => {
     setError,
   } = useForm();
 
-  console.log("errors:", errors);
-
   const [recordInserted, setRecordInserted] = useState<boolean>(false);
   const [selectedOpponentId, setSelectedOpponentId] = useState<string>("");
 

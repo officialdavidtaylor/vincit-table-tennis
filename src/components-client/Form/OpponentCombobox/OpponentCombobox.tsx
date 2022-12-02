@@ -39,6 +39,7 @@ const OpponentCombobox = React.forwardRef<HTMLInputElement, any>(
               .toLowerCase()
               .includes(query.toLowerCase());
           });
+
     return (
       <Combobox
         as="div"
