@@ -18,16 +18,14 @@ const LoginForm = () => {
     console.log("executed onSubmit!");
     // use Supabase auth here :D
     try {
-      const takenEmail = await supabase
-        .from("PlayerTable")
-        .select("*")
-        .eq("playerEmail", formData.playerEmail);
-      if (takenEmail?.data?.length && formData.playerEmail) {
+      if (formData.playerEmail) {
         const { error } = await supabase.auth.signInWithOtp({
           email: formData.playerEmail,
-          options: { data: { playerName: formData.playerName } },
+          options: {
+            shouldCreateUser: false,
+          },
         });
-        if (error) throw new Error("For some reason this didn't work :shrug:");
+        if (error) throw new Error(error.message);
       }
       alert("Check your email for the login link!");
     } catch (error) {
