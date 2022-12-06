@@ -25,7 +25,7 @@ const LoginForm = () => {
             shouldCreateUser: false,
           },
         });
-        if (error) throw new Error("For some reason this didn't work :shrug:");
+        if (error) throw new Error(error.message);
       }
       alert("Check your email for the login link!");
     } catch (error) {
