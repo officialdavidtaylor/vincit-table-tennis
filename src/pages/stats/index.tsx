@@ -44,7 +44,7 @@ export default function Home({
       <PageLayout segment="STATS :D">
         <div className="flex flex-col gap-8">
           <section>
-            <h2 className="pb-8 text-3xl">Personal</h2>
+            <h2 className="pb-8 text-3xl">Personal ({playerName})</h2>
             <div className="grid grid-cols-2 gap-6">
               <Block value={gamesPlayed} label="Games Played"></Block>
               <Block value={pointsScored} label="Points Scored"></Block>
