@@ -7,9 +7,9 @@ import PageLayout from "src/components-client/PageLayout";
 function Block({ value, label }: { value: string | number; label: string }) {
   return (
     <>
-      <div className="flex aspect-square flex-col items-center justify-center border border-black text-center">
-        <p className="pb-2 text-7xl font-black">{value}</p>
-        <h3 className="text-3xl ">{label}</h3>
+      <div className="flex aspect-square flex-col items-center justify-center rounded-md border border-gray-600 text-center">
+        <p className="pb-2 text-5xl font-extrabold">{value}</p>
+        <h3 className="text-xl ">{label}</h3>
       </div>
     </>
   );
@@ -44,16 +44,16 @@ export default function Home({
       <PageLayout segment="STATS :D">
         <div className="flex flex-col gap-8">
           <section>
-            <h2 className="pb-8 text-3xl">Personal ({playerName})</h2>
-            <div className="grid grid-cols-2 gap-6">
+            <h2 className="pb-4 text-3xl">Personal ({playerName})</h2>
+            <div className="grid grid-cols-2 gap-4">
               <Block value={gamesPlayed} label="Games Played"></Block>
               <Block value={pointsScored} label="Points Scored"></Block>
               <Block value={gamesWon} label="Wins"></Block>
             </div>
           </section>
           <section>
-            <h2 className="pb-8 text-3xl">Office</h2>
-            <div className="grid grid-cols-2 gap-6">
+            <h2 className="pb-4 text-3xl">Office</h2>
+            <div className="grid grid-cols-2 gap-4">
               <Block value={totalGames} label="Total Games"></Block>
               <Block value={totalRallies} label="Total Rallies"></Block>
             </div>
