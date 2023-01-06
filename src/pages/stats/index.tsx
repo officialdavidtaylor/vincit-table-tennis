@@ -22,6 +22,7 @@ interface Props {
       gamesPlayed: number;
       gamesWon: number;
       pointsScored: number;
+      playerTotalRallies: number;
     };
     office: {
       totalGames: number;
@@ -32,7 +33,13 @@ interface Props {
 
 export default function Home({
   data: {
-    player: { gamesPlayed, gamesWon, playerName, pointsScored },
+    player: {
+      gamesPlayed,
+      gamesWon,
+      playerName,
+      pointsScored,
+      playerTotalRallies,
+    },
     office: { totalGames, totalRallies },
   },
 }: Props) {
@@ -100,9 +107,11 @@ export const getServerSideProps = async (
 
   let gamesPlayed = myGames.length;
   let gamesWon = 0;
+  let playerTotalRallies = 0;
   let pointsScored = 0;
 
   myGames.forEach((game) => {
+    playerTotalRallies += game.player1Score + game.player2Score;
     if (game.player1 === userId) {
       pointsScored += game.player1Score;
       if (game.player1Score > game.player2Score) {
@@ -120,7 +129,13 @@ export const getServerSideProps = async (
   return {
     props: {
       data: {
-        player: { playerName, gamesPlayed, gamesWon, pointsScored },
+        player: {
+          playerName,
+          gamesPlayed,
+          gamesWon,
+          pointsScored,
+          playerTotalRallies,
+        },
         office: { totalGames, totalRallies },
       },
     },
