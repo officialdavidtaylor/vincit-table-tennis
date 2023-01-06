@@ -43,6 +43,8 @@ export default function Home({
     office: { totalGames, totalRallies },
   },
 }: Props) {
+  const winRate = Math.floor((gamesWon / gamesPlayed) * 100) + "%";
+  const pointRate = Math.floor((pointsScored / playerTotalRallies) * 100) + "%";
   return (
     <>
       <Head>
@@ -53,16 +55,22 @@ export default function Home({
           <section>
             <h2 className="pb-4 text-3xl">Personal ({playerName})</h2>
             <div className="grid grid-cols-2 gap-4">
-              <Block value={gamesPlayed} label="Games Played"></Block>
-              <Block value={pointsScored} label="Points Scored"></Block>
-              <Block value={gamesWon} label="Wins"></Block>
+              <Block value={gamesPlayed} label="Games Played" />
+              <Block value={playerTotalRallies} label="Total Rallies" />
+              <Block value={gamesWon} label="Wins" />
+              <Block value={pointsScored} label="Points Scored" />
+            </div>
+            <hr className="my-8" />
+            <div className="grid grid-cols-2 gap-4">
+              <Block value={winRate} label="Win Rate" />
+              <Block value={pointRate} label="Point Rate" />
             </div>
           </section>
           <section>
             <h2 className="pb-4 text-3xl">Office</h2>
             <div className="grid grid-cols-2 gap-4">
-              <Block value={totalGames} label="Total Games"></Block>
-              <Block value={totalRallies} label="Total Rallies"></Block>
+              <Block value={totalGames} label="Total Games" />
+              <Block value={totalRallies} label="Total Rallies" />
             </div>
           </section>
         </div>
