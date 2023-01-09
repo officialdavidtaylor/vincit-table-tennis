@@ -22,6 +22,7 @@ interface Props {
       gamesPlayed: number;
       gamesWon: number;
       pointsScored: number;
+      playerTotalRallies: number;
     };
     office: {
       totalGames: number;
@@ -32,10 +33,18 @@ interface Props {
 
 export default function Home({
   data: {
-    player: { gamesPlayed, gamesWon, playerName, pointsScored },
+    player: {
+      gamesPlayed,
+      gamesWon,
+      playerName,
+      pointsScored,
+      playerTotalRallies,
+    },
     office: { totalGames, totalRallies },
   },
 }: Props) {
+  const winRate = Math.floor((gamesWon / gamesPlayed) * 100) + "%";
+  const pointRate = Math.floor((pointsScored / playerTotalRallies) * 100) + "%";
   return (
     <>
       <Head>
@@ -46,16 +55,22 @@ export default function Home({
           <section>
             <h2 className="pb-4 text-3xl">Personal ({playerName})</h2>
             <div className="grid grid-cols-2 gap-4">
-              <Block value={gamesPlayed} label="Games Played"></Block>
-              <Block value={pointsScored} label="Points Scored"></Block>
-              <Block value={gamesWon} label="Wins"></Block>
+              <Block value={gamesPlayed} label="Games Played" />
+              <Block value={playerTotalRallies} label="Total Rallies" />
+              <Block value={gamesWon} label="Wins" />
+              <Block value={pointsScored} label="Points Scored" />
+            </div>
+            <hr className="my-8" />
+            <div className="grid grid-cols-2 gap-4">
+              <Block value={winRate} label="Win Rate" />
+              <Block value={pointRate} label="Point Rate" />
             </div>
           </section>
           <section>
             <h2 className="pb-4 text-3xl">Office</h2>
             <div className="grid grid-cols-2 gap-4">
-              <Block value={totalGames} label="Total Games"></Block>
-              <Block value={totalRallies} label="Total Rallies"></Block>
+              <Block value={totalGames} label="Total Games" />
+              <Block value={totalRallies} label="Total Rallies" />
             </div>
           </section>
         </div>
@@ -100,9 +115,11 @@ export const getServerSideProps = async (
 
   let gamesPlayed = myGames.length;
   let gamesWon = 0;
+  let playerTotalRallies = 0;
   let pointsScored = 0;
 
   myGames.forEach((game) => {
+    playerTotalRallies += game.player1Score + game.player2Score;
     if (game.player1 === userId) {
       pointsScored += game.player1Score;
       if (game.player1Score > game.player2Score) {
@@ -120,7 +137,13 @@ export const getServerSideProps = async (
   return {
     props: {
       data: {
-        player: { playerName, gamesPlayed, gamesWon, pointsScored },
+        player: {
+          playerName,
+          gamesPlayed,
+          gamesWon,
+          pointsScored,
+          playerTotalRallies,
+        },
         office: { totalGames, totalRallies },
       },
     },
