@@ -65,11 +65,7 @@ const LoginForm = () => {
             {errors.playerEmail.message as string}
           </span>
         ) : null}
-        <Button
-          type="submit"
-          className="button-primary"
-          isLoading={isSubmitting}
-        >
+        <Button type="submit" className="btn-primary" isLoading={isSubmitting}>
           Login!
         </Button>
       </form>
