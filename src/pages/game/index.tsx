@@ -5,6 +5,7 @@ import { Session, User } from "@supabase/auth-helpers-nextjs";
 
 import { GetServerSidePropsContext } from "next";
 import { supabaseServiceRole } from "@lib/supabaseServiceRole";
+import Head from "next/head";
 
 // eslint-disable-next-line import/no-anonymous-default-export, react/display-name
 export default (props: {
@@ -14,6 +15,9 @@ export default (props: {
   gameTypes: any;
 }) => (
   <>
+    <Head>
+      <title>Log Game • Vincit Table Tennis</title>
+    </Head>
     <GamePage {...props} />
   </>
 );
