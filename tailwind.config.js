@@ -1,3 +1,6 @@
+// import our custom button component design tokens
+const buttons = require("./src/styles/buttons");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -13,5 +16,7 @@ module.exports = {
   plugins: [
     require("@tailwindcss/forms"),
     require("@headlessui/tailwindcss")({ prefix: "ui" }),
+    // and add them as a plugin
+    buttons,
   ],
 };

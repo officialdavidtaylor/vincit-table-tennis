@@ -44,6 +44,7 @@
     "@netlify/plugin-nextjs": "^4.28.4-appdir.0",
     "@tailwindcss/forms": "^0.5.3",
     "autoprefixer": "^10.4.13",
+    "csstype": "^3.1.1",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.0",
     "postcss": "^8.4.18",
