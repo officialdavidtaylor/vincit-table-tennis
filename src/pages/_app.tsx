@@ -39,6 +39,8 @@ export default function App({
         <link rel="icon" sizes="192x192" href="touch-icon-hd.png" />
         {/* Android Devices Normal Resolution */}
         <link rel="icon" sizes="128x128" href="touch-icon.png" />
+
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <SessionContextProvider
         supabaseClient={supabaseClient}
